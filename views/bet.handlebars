@@ -21,14 +21,14 @@
                     <td>{{awayPts}}</td>
                     <td><input name="aspBet" type="number"></td>
                     <td><input name="aspWin" type="number"></td>
-                    <td><input name="aspCollect" enabled type="number"></td> <!-- DPTEST enabled for debug -->
+                    <td><input name="aspCollect" disabled type="number"></td>
                 </tr>
                 <tr>
                     <td>ML</td>
                     <td>{{awayML}}</td>
                     <td><input name="amlBet" type="number"></td>
                     <td><input name="amlWin" type="number"></td>
-                    <td><input name="amlCollect" enabled type="number"></td>
+                    <td><input name="amlCollect" disabled type="number"></td>
                 </tr>
                 <tr>
                     <td class="rowsep" colspan="5">
@@ -52,7 +52,7 @@
                     <td>{{homePts}}</td>
                     <td><input name="hspBet" type="number"></td>
                     <td><input name="hspWin" type="number"></td>
-                    <td><input name="hspCollect" enabled type="number"></td>
+                    <td><input name="hspCollect" disabled type="number"></td>
                 </tr>
                 <tr>
                     <td>ML</td>
@@ -67,14 +67,14 @@
                     <td>{{over}}</td>
                     <td><input name="overBet" type="number"></td>
                     <td><input name="overWin" type="number"></td>
-                    <td><input name="overCollect" enabled type="number"></td>
+                    <td><input name="overCollect" disabled type="number"></td>
                 </tr>
                 <tr>
                     <td>UNDER</td>
                     <td>{{under}}</td>
                     <td><input name="underBet" type="number"></td>
                     <td><input name="underWin" type="number"></td>
-                    <td><input name="underCollect" enabled type="number"></td>
+                    <td><input name="underCollect" disabled type="number"></td>
                 </tr>
              </tbody>
             </table>
@@ -119,6 +119,83 @@ $('input').change(inputChanged);
 });
 
 function inputChanged(ev) {
-  alert('input changed ' + JSON.stringify(ev));
+  let inp = ev.currentTarget;
+  let form = inp.form;
+  const awayPts = form.awayPts.value;
+  const awayML = form.awayML.value;
+  const homePts = form.awayPts.value;
+  const homeML = form.homeML.value; 
+  const over = form.over.value;
+  const under = form.under.value;
+
+  switch (inp.name) {
+  case "aspBet":
+    form.aspWin.value = Math.ceil(form.aspBet.value / 1.1);
+    form.aspCollect.value = Number(form.aspBet.value) + Number(form.aspWin.value);
+    break;
+  case "aspWin":
+    form.aspBet.value = Math.ceil(form.aspWin.value * 1.1)
+    form.aspCollect.value = Number(form.aspBet.value) + Number(form.aspWin.value);
+    break;
+  case "hspBet":
+    form.hspWin.value = Math.ceil(form.hspBet.value / 1.1);
+    form.hspCollect.value = Number(form.hspBet.value) + Number(form.hspWin.value);
+    break;
+  case "hspWin":
+    form.hspBet.value = Math.ceil(form.hspWin.value * 1.1);
+    form.hspCollect.value = Number(form.hspBet.value) + Number(form.hspWin.value);
+    break;
+  case "amlBet":
+    if (awayML > 0)
+      form.amlWin.value = Math.floor(awayML * Number(form.amlBet.value) / 100.0);
+    else
+      form.amlWin.value = Math.floor(Number(-form.amlBet.value) * 100.0 / awayML);
+    form.amlCollect.value = Number(form.amlBet.value) + Number(form.amlWin.value);
+    break;
+  case "amlWin":
+/* TBD DPTEST finish later?
+    if (awayML > 0)
+      form.amlWin.value = Math.floor(awayML * Number(form.amlBet.value) / 100.0);
+    else
+      form.amlWin.value = Math.floor(Number(-form.amlBet.value) * 100.0 / awayML);
+*/
+    form.amlCollect.value = Number(form.amlBet.value) + Number(form.amlWin.value);
+    break;
+  case "hmlBet":
+    if (homeML > 0)
+      form.hmlWin.value = Math.floor(homeML * Number(form.hmlBet.value) / 100.0);
+    else
+      form.hmlWin.value = Math.floor(Number(-form.hmlBet.value) * 100.0 / homeML);
+    form.hmlCollect.value = Number(form.hmlBet.value) + Number(form.hmlWin.value);
+    break;
+  case "hmlWin":
+/*
+    if (homeML > 0)
+      form.hmlWin.value = Math.floor(homeML * Number(form.hmlBet.value) / 100.0);
+    else
+      form.hmlWin.value = Math.floor(Number(-form.hmlBet.value) * 100.0 / homeML);
+*/
+    form.hmlCollect.value = Number(form.hmlBet.value) + Number(form.hmlWin.value);
+    break;
+  case "overBet":
+    form.overWin.value = Math.ceil(Number(form.overBet.value) / 1.1);
+    form.overCollect.value = Number(form.overBet.value) + Number(form.overWin.value);
+    break;
+  case "overWin":
+    form.overBet.value = Math.ceil(Number(form.overWin.value * 1.1));
+    form.overCollect.value = Number(form.overBet.value) + Number(form.overWin.value);
+    break;
+  case "underBet":
+    form.underWin.value = Math.ceil(Number(form.underBet.value) / 1.1);
+    form.underCollect.value = Number(form.underBet.value) + Number(form.underWin.value);
+    break;
+  case "underWin":
+    form.underBet.value = Math.ceil(Number(form.underWin.value * 1.1));
+    form.underCollect.value = Number(form.underBet.value) + Number(form.underWin.value);
+  default:
+    alert("unknown " + inp.name);
+    break;
+  }
 }
+
 </script>

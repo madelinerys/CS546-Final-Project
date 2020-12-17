@@ -44,7 +44,7 @@ async function makeAndSubmitPanel(userid, line) {
      "underCollect": null};
   betTypes.forEach(betType => {
     const betAmount = randomBetAmount();
-    const straightWinAmount = Math.floor(0.9 * betAmount);
+    const straightWinAmount = Math.ceil(betAmount / 1.1);
     const straightCollectAmount = betAmount + straightWinAmount;
     const mlBetAmount = betAmount;
     let mlWinAmount = 1;
