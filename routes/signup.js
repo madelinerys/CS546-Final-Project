@@ -5,7 +5,7 @@ const router = express.Router();
 const {users} = require('../data');
 
 router.get('/', async (req, res) => {
-  res.render('signup', {cssOverrides: "signup.css"});
+  res.render('signup', {title: "Create an Account", cssOverrides: "signup.css"});
 });
 
 router.post('/', async (req, res) => {

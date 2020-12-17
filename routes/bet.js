@@ -51,7 +51,8 @@ router.use((req, res, next) => {
 router.get('/', async (req, res) => {
   try {
     let allLines = await lines.get();
-    res.render('bet', {allLines: allLines,
+    res.render('bet', {title: "Make Bets", 
+                       allLines: allLines,
                        cssOverrides: "bet.css"});
   }
   catch (e) {
