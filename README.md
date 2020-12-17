@@ -42,7 +42,7 @@ Note: The app was tested using Chrome on a Windows PC.
 # Fund Account Page
 1. On the fund account page, you can view your balance at the top.
 2. Underneath the balance is a form to enter your card information, along with a field to enter how much money you wish to fund your account with.
-    a. Right now, there is a note on the application on what card numbers you can enter for demo purposes, so you don't have to enter your actual card information! Of course, if this were a real market product, we would remove that!!
+    a. For testing purposes use the numbers 5100000000000000 for MASTERCARD, 4111111111111111 for VISA, 340000000000009 for AMEX, 6011000000000004 for DISCOVER
 3. Once you have entered your card information and preferred amount, press submit on the form.
 4. Once you submit the form to fund your account, you will be redirected to the betting page to place more bets!
     a. If you return to the Fun Account page, you can view your updated balance!
