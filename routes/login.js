@@ -51,7 +51,7 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res, next) => {
   console.log("login.js / GET routes finds AuthCookie " + req.session.AuthCookie);
   if (!req.session.AuthCookie) {
-    res.render('login', {cssOverrides: "login.css"});
+    res.render('login', {title: "Login or Sign Up", cssOverrides: "login.css"});
     next();
     return;
   }

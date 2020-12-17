@@ -22,7 +22,7 @@ router.get("/", async (req, res) => {
           let requesteduser = await users.getUserByName(username);
         let amountBal = requesteduser.balance;
         let name = requesteduser.username;
-        res.render("fund", {Balance:amountBal,Name:name});
+        res.render("fund", {title: "Fund Account", Balance:amountBal,Name:name});
   } catch (e) {
     res.status(400).send(`route: / ${e}`);
   }
