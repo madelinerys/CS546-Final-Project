@@ -16,17 +16,14 @@
                             <label for="ctype"> Card Type </label>
                             <select required="required" name="ctype" id="ctype">
                                 <option value="" disabled selected> Select card type </option>
-                                <option value="01" name="VISA">VISA</option>
-                                <option value="02" name="02">AMERICAN EXPRESS</option>
-                                <option value="03" name="03">MASTERCARD</option>
-                                <option value="04" name="04">DISCOVER</option>
+                                <option value="01" id="VISA">VISA</option>
+                                <option value="02" id="02">AMERICAN EXPRESS</option>
+                                <option value="03" id="03">MASTERCARD</option>
+                                <option value="04" id="04">DISCOVER</option>
                             </select>
                             <br><br>
                         </div>
                         <div class="col-50">
-                            <b>
-                                <label for="balamt">Funding Amount (in whole USD)</label>
-                            </b>
                             <label>Funding amount (whole USD)<input type="number" id="funamt" name="funamot" value="10"></label>
                             <br>
 
@@ -38,19 +35,21 @@
                     
                     <label for="ccnum">Credit card number</label>
                     <input type="text" autocomplete="on" required="required" id="ccnum" name="cardnumber" placeholder="Enter your card number here" maxlength=19>
-
+                </div>
 
 <br><br>
                     <div class="row">
                         <div class="col-50">
                             <label for="expyear">Expiry Month and Expiry year</label>
-                            <input type="month" id="expyear" name="expyear" placeholder="Enter the expiry year here" autocomplete="off" required="required" maxlength=4>
+                            <p>Enter the expiry year here</p>
+                            <input type="month" id="expyear" name="expyear" autocomplete="off" required="required">
                         </div>
 
 
                         <div class="col-50">
                             <label for="cvv">CVV</label>
-                            <input type="number" id="cvv" name="cvv" required="required" autocomplete="off" placeholder="Enter your CVV here." maxlength=4>
+                            <p>Enter your CVV here.</p>
+                            <input type="number" id="cvv" name="cvv" required="required" autocomplete="off" max="9999">
                         </div>
                     </div>
 
