@@ -118,9 +118,7 @@ async function submitPanel(bettorid, panel) {
   }
   let betAmount = 0;
   panelBets.forEach(bet => { betAmount += bet.amount });
-  console.log("before users.debitBalanceById for user id " + base.bettorid);
   let r = await users.debitBalanceById(base.bettorid, betAmount);
-  console.log("back from users.debitBalanceById for user id " + base.bettorid);
   if (r.modifiedCount) {
     panelBets.forEach(async (bet) => { await submitBet(bet) });
     return {status: 200}

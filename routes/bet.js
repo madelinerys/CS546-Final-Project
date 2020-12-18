@@ -41,7 +41,6 @@ const allLines = [
   ];
 
 router.use((req, res, next) => {
-  console.log("bet.js req.session.AuthCookie: " + req.session.AuthCookie);
   if (!req.session.AuthCookie)
     res.redirect('/');
   else

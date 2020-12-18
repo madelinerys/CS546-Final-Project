@@ -16,6 +16,9 @@
 1. Check to verify that you now have a database called `jerry` (the code name
 for our project). 
 
+1. You will need an internet connection to run the app. It uses two external
+web sites through makeshift APIs (screen scraping), to pull down betting lines and final scores.
+
 # Running the app
 
 Note: The app was tested using Chrome on a Windows PC.
@@ -32,7 +35,7 @@ Note: The app was tested using Chrome on a Windows PC.
 4. When you are finished betting, click the logout button on the navigation bar, and you will be all logged out!
 
 # Betting Page
-1. On the betting page, you will see panels for each of the upcoming NFL games for the week. At the top of the panel reads the Away Team, the Home Team, and the date of the game. At the top right is a "submit button" 
+1. On the betting page, you will see panels for each of the upcoming NFL games for the week. At the top of the panel reads the Away Team, the Home Team, and the date of the game. At the top right is a "submit button".
 2. The left column describes the types of bets you can make, those being Away spread, Away money line, Home spread, Home money line, Over and Under.
 3. To the right of the type of bet and the "number" for that bet, if applicable, is a column where you can enter how much you'd like to bet. Once you do this, the "Win" and "Collect" column will automatically be populated with how much money you would stand to win and collect if you were to place this bet.
 4. Once you are satisfied with your bet(s), you may click "Submit" on the top right corner of the panel. If the bet is accepted, the box will then read "CONFIRMED". 
@@ -45,25 +48,26 @@ Note: The app was tested using Chrome on a Windows PC.
     a. For testing purposes use the numbers 5100000000000000 for MASTERCARD, 4111111111111111 for VISA, 340000000000009 for AMEX, 6011000000000004 for DISCOVER
 3. Once you have entered your card information and preferred amount, press submit on the form.
 4. Once you submit the form to fund your account, you will be redirected to the betting page to place more bets!
-    a. If you return to the Fun Account page, you can view your updated balance!
+    a. If you return to the Fund Account page, you can view your updated balance!
 
 # History
 1. The history page will tell you your betting history. 
 2. At the top are two summaries, one for how much you've won (or lost!) so far, on bets that have resolved, and another for how much money you could potentially win based on bets that are still in progress.
 3. Below those summaries is a table of each individual bet you've placed. 
-4. At the bottom of the history table is a row for the totals of each column where a total would be relevant (Bet amount, Win amount, Collect amount, and Paid amount)
-5. For some columns, there is not data available (ex. number for Over/Under bets, or resolved date for bets which are not resolved). These fields are intentionally left blank.
+4. At the bottom of the history table is a row for the totals of each column where a total would be relevant (Bet amount, Win amount, Collect amount, and Paid amount).
+5. For some columns, there is no data available (ex. number for Over/Under bets, or resolved date for bets which are not resolved). These fields are intentionally left blank.
 
 # Admin
 ** Reminder: Access by double clicking Jerry icon at top right **
-1. The admin panel is extremely useful for both testing and adminsitrative purposes, and has functionality for both.
-2. The first function on the admin page is "Set SimDate". This allows an adminstrator to set a simulated date some time in the past, which can allow them to place bets on past games.
-3. The next function is "Delete all Bets" which, as it sounds, clears the betting collection of the database and starts fresh.
-4. The third function is "Resolve Bets" which resolves all bets that can be resolved, if they have not been resolved already.
+1. NOTE: If you are already authenticated, you can also go directly to http://localhost:3000/admin and leave that tab up in a separate window.
+2. The admin panel is extremely useful for both testing and adminsitrative purposes, and has functionality for both.
+3. The first function on the admin page is "Set SimDate". This allows an adminstrator to set a simulated date some time in the past, which can allow them to place bets on past games.
+4. The next function is "Delete all Bets" which, as it sounds, clears the betting collection of the database and starts fresh.
+5. The third function is "Resolve Bets" which resolves all bets that can be resolved, if they have not been resolved already.
     a. A bet that can be resolved is one in which the game it was bet on already completed, so it has data to be resolved.
     b. The resolve bets sbutton queries the NFL lines API for game data and updates the bets database with the win/loss data.
-5. The fourth function is "Generate Random Bets". This button allows the user to populate their own betting history with randomized bets. It takes into account the SimDate, mentioned earlier. It will generate as many bets as your balance allows, with random amounts.
-6. The final function is a link to see the house's take. The text "Summary of how the house is doing on betting payout" is a link to this page.
+6. The fourth function is "Generate Random Bets". This button allows the user to populate their own betting history with randomized bets. It takes into account the SimDate, mentioned earlier. It will generate as many bets as your balance allows, with random amounts.
+7. The final function is a link to see the house's take. The text "Summary of how the house is doing on betting payout" is a link to this page.
     a. The house take page is very similar to the betting history page, with a few key differences. 
       1. There are four summaries at the top of the house take page. The first is how much the house has had to pay out so far on all resolved bets. The second is how much the house has profited so far on resolved bets (a negative number indicates a loss). The third is potential future payout, which is how much the house may have to pay on unresolved bets in the future. The final summary is potential future profit, which is how much the house could potentially make if all the unresolved bets end in a loss (no payout to bettors). These update as bets are resolved.
       2. Under the summaries is a table similar to the betting history page, but instead of listing only the bets for the logged in user, it lists all bets for all users.

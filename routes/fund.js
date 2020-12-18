@@ -8,7 +8,6 @@ const { lines } = require("../data");
 const xss = require('xss');
 
 router.use((req, res, next) => {
-  console.log("fund.js req.session.AuthCookie: " + req.session.AuthCookie);
   if (!req.session.AuthCookie)
     res.redirect('/');
   else
