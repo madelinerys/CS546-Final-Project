@@ -11,7 +11,7 @@
 
 1. Download dependencies for the project via `npm install`.
 
-1. Seed the database using either `npm seed` or `node seed.js`.
+1. Seed the database using either `npm run seed` or `node seed.js`.
 
 1. Check to verify that you now have a database called `jerry` (the code name
 for our project). 
